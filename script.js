@@ -154,7 +154,7 @@ class BlogManager {
                     <p class="post-date">📅 ${this.formatDate(post.date)}</p>
                     <p class="post-text">${this.escapeHtml(post.content)}</p>
                     <div class="post-actions">
-                        <a href="${this.escapeHtml(post.affiliateLink)}" 
+                        <a href="${encodeURI(post.affiliateLink)}" 
                            target="_blank" 
                            rel="noopener noreferrer" 
                            class="btn btn-primary post-cta">
@@ -162,10 +162,10 @@ class BlogManager {
                         </a>
                     </div>
                     <div class="post-actions">
-                        <button onclick="blogManager.editPost('${post.id}')" class="btn btn-edit">
+                        <button onclick="blogManager.editPost('${this.escapeHtml(post.id)}')" class="btn btn-edit">
                             ✏️ Edit
                         </button>
-                        <button onclick="blogManager.deletePost('${post.id}')" class="btn btn-delete">
+                        <button onclick="blogManager.deletePost('${this.escapeHtml(post.id)}')" class="btn btn-delete">
                             🗑️ Delete
                         </button>
                     </div>

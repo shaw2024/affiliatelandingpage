@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affiliate Blog - Stories & Products</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>📱 Affiliate Blog</h1>
+            <p class="tagline">Share Stories, Promote Products</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Add New Post Section -->
+        <section class="add-post-section">
+            <button id="toggleFormBtn" class="btn btn-primary">✍️ Create New Post</button>
+            
+            <div id="postForm" class="post-form hidden">
+                <h2 id="formTitle">Create New Blog Post</h2>
+                <form id="blogPostForm">
+                    <input type="hidden" id="postId" value="">
+                    
+                    <div class="form-group">
+                        <label for="postTitle">Post Title*</label>
+                        <input type="text" id="postTitle" required placeholder="Enter an engaging title...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="postContent">Story/Content*</label>
+                        <textarea id="postContent" required placeholder="Paste your Facebook story or write your content here..." rows="6"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="postImage">Image URL (optional)</label>
+                        <input type="url" id="postImage" placeholder="https://example.com/image.jpg">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="affiliateLink">Affiliate Link/Product Page*</label>
+                        <input type="url" id="affiliateLink" required placeholder="https://your-affiliate-link.com/product">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ctaText">Call-to-Action Button Text</label>
+                        <input type="text" id="ctaText" placeholder="Shop Now" value="Shop Now">
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save Post</button>
+                        <button type="button" id="cancelBtn" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Blog Posts Grid -->
+        <section class="blog-posts-section">
+            <h2>Latest Posts</h2>
+            <div id="postsGrid" class="posts-grid">
+                <!-- Posts will be dynamically loaded here -->
+            </div>
+            <div id="emptyState" class="empty-state">
+                <p>📝 No posts yet. Create your first affiliate blog post!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Affiliate Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

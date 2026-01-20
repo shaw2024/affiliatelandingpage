@@ -1,5 +1,9 @@
 import { BlogPost } from './types';
 
+// NOTE: Replace 'youraffiliateID-20' in all Amazon URLs below with your actual Amazon Associates affiliate ID
+// You can also use an environment variable: process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_ID
+// For production, consider storing the affiliate ID in .env.local
+
 export const blogPosts: BlogPost[] = [
   {
     id: '1',

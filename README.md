@@ -33,12 +33,21 @@ cd affiliatelandingpage
 npm install
 ```
 
-3. Run the development server:
+3. Set up your Amazon Affiliate ID:
+```bash
+# Copy the environment variables template
+cp .env.example .env.local
+
+# Edit .env.local and add your Amazon Associates affiliate ID
+# NEXT_PUBLIC_AMAZON_AFFILIATE_ID=yourname-20
+```
+
+4. Run the development server:
 ```bash
 npm run dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
 ## How to Add New Blog Posts
 

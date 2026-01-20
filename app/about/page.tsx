@@ -14,7 +14,7 @@ export default function AboutPage() {
 
       <div className="prose prose-lg max-w-none mb-12">
         <p className="text-gray-700 leading-relaxed">
-          Welcome to AffiliateBlog! We're passionate about discovering and sharing amazing products 
+          Welcome to AffiliateBlog! We&apos;re passionate about discovering and sharing amazing products 
           that are taking social media by storm. Our mission is to help you find high-quality products 
           that real people love and recommend.
         </p>

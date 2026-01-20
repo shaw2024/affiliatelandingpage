@@ -27,7 +27,7 @@ export default function Hero() {
 
           <p className="text-xl md:text-2xl text-blue-100 mb-10 max-w-3xl mx-auto text-balance">
             We curate the best products from viral posts on Facebook, Instagram, Twitter, and more. 
-            Shop trending items that everyone's talking about!
+            Shop trending items that everyone&apos;s talking about!
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

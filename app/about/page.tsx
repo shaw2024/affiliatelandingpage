@@ -33,7 +33,7 @@ export default function AboutPage() {
           </div>
           <h3 className="text-xl font-bold text-gray-900 mb-2">Trending Products</h3>
           <p className="text-gray-600">
-            We track viral products across all major social platforms to bring you what's hot right now.
+            We track viral products across all major social platforms to bring you what&apos;s hot right now.
           </p>
         </div>
 

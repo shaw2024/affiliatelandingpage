@@ -24,6 +24,9 @@ export default function Header() {
             <Link href="/" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
               Home
             </Link>
+            <Link href="/rewrite" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+              AI Rewriter
+            </Link>
             <Link href="/admin" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
               Add Post
             </Link>
@@ -54,6 +57,13 @@ export default function Header() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Home
+              </Link>
+              <Link
+                href="/rewrite"
+                className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                AI Rewriter
               </Link>
               <Link
                 href="/admin"

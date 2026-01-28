@@ -5,6 +5,7 @@ import { SocialPost } from '@/lib/types';
 import SocialPostCard from '@/components/SocialPostCard';
 import RewriteModal from '@/components/RewriteModal';
 import { Facebook, Instagram, MessageCircle, Loader2 } from 'lucide-react';
+import { getAllPopularPosts } from '@/lib/socialMedia';
 
 export default function SocialFeedPage() {
   const [posts, setPosts] = useState<SocialPost[]>([]);
@@ -15,13 +16,14 @@ export default function SocialFeedPage() {
   const fetchPosts = async () => {
     setLoading(true);
     try {
-      const url = selectedPlatform === 'all' 
-        ? '/api/social/posts'
-        : `/api/social/posts?platform=${selectedPlatform}`;
+      const allPosts = await getAllPopularPosts();
       
-      const response = await fetch(url);
-      const data = await response.json();
-      setPosts(data.posts || []);
+      // Filter by platform if specified
+      const filteredPosts = selectedPlatform === 'all' 
+        ? allPosts
+        : allPosts.filter(post => post.platform === selectedPlatform);
+      
+      setPosts(filteredPosts);
     } catch (error) {
       console.error('Error fetching posts:', error);
     } finally {

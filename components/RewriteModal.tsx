@@ -24,6 +24,12 @@ export default function RewriteModal({ post, onClose }: RewriteModalProps) {
   const handleRewrite = async (generateMultiple = false) => {
     setLoading(true);
     setPostSuccess(false);
+    
+    // For GitHub Pages static deployment, show informational message
+    alert('AI Rewriting requires a server environment.\n\nTo use this feature:\n1. Deploy to Vercel, Netlify, or another platform that supports Next.js API routes\n2. Add your ANTHROPIC_API_KEY to environment variables\n3. Or run locally with "npm run dev"\n\nFor now, you can copy the original content and rewrite it manually.');
+    setLoading(false);
+    
+    /* Uncomment this code when deploying to a server platform:
     try {
       const response = await fetch('/api/rewrite', {
         method: 'POST',
@@ -55,6 +61,7 @@ export default function RewriteModal({ post, onClose }: RewriteModalProps) {
     } finally {
       setLoading(false);
     }
+    */
   };
 
   const handleCopy = () => {
@@ -66,6 +73,11 @@ export default function RewriteModal({ post, onClose }: RewriteModalProps) {
   const handlePost = async () => {
     setPosting(true);
     setPostSuccess(false);
+    
+    alert('Direct posting requires a server environment.\n\nFor GitHub Pages deployment, please copy the content and post manually to your social media accounts.');
+    setPosting(false);
+    
+    /* Uncomment this code when deploying to a server platform:
     try {
       const response = await fetch('/api/social/post', {
         method: 'POST',
@@ -94,6 +106,7 @@ export default function RewriteModal({ post, onClose }: RewriteModalProps) {
     } finally {
       setPosting(false);
     }
+    */
   };
 
   return (

@@ -11,6 +11,7 @@ export interface SocialPost {
   shares: number;
   createdAt: string;
   url: string;
+  category?: string;
 }
 
 export interface RewrittenPost {

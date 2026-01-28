@@ -11,6 +11,7 @@ export default function SocialFeedPage() {
   const [posts, setPosts] = useState<SocialPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedPlatform, setSelectedPlatform] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedPost, setSelectedPost] = useState<SocialPost | null>(null);
 
   const fetchPosts = async () => {
@@ -18,10 +19,14 @@ export default function SocialFeedPage() {
     try {
       const allPosts = await getAllPopularPosts();
       
-      // Filter by platform if specified
-      const filteredPosts = selectedPlatform === 'all' 
+      // Filter by platform and category
+      let filteredPosts = selectedPlatform === 'all' 
         ? allPosts
         : allPosts.filter(post => post.platform === selectedPlatform);
+      
+      if (selectedCategory !== 'all') {
+        filteredPosts = filteredPosts.filter(post => post.category === selectedCategory);
+      }
       
       setPosts(filteredPosts);
     } catch (error) {
@@ -34,7 +39,7 @@ export default function SocialFeedPage() {
   useEffect(() => {
     fetchPosts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedPlatform]);
+  }, [selectedPlatform, selectedCategory]);
 
   const handleRewrite = (post: SocialPost) => {
     setSelectedPost(post);
@@ -45,6 +50,16 @@ export default function SocialFeedPage() {
     { id: 'facebook', label: 'Facebook', icon: Facebook },
     { id: 'instagram', label: 'Instagram', icon: Instagram },
     { id: 'tiktok', label: 'TikTok', icon: MessageCircle },
+  ];
+
+  const categories = [
+    { id: 'all', label: 'All Topics', emoji: '🌐' },
+    { id: 'Christian', label: 'Christian', emoji: '✝️' },
+    { id: 'Technology', label: 'Technology', emoji: '💻' },
+    { id: 'Beauty', label: 'Beauty', emoji: '💄' },
+    { id: 'Lifestyle', label: 'Lifestyle', emoji: '☕' },
+    { id: 'Gaming', label: 'Gaming', emoji: '🎮' },
+    { id: 'Shopping', label: 'Shopping', emoji: '🛍️' },
   ];
 
   return (
@@ -91,7 +106,7 @@ export default function SocialFeedPage() {
         </div>
 
         {/* Platform Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-8">
+        <div className="flex flex-wrap justify-center gap-3 mb-6">
           {platforms.map((platform) => {
             const Icon = platform.icon;
             return (
@@ -109,6 +124,31 @@ export default function SocialFeedPage() {
               </button>
             );
           })}
+        </div>
+
+        {/* Category Scroll Filter */}
+        <div className="mb-8">
+          <h3 className="text-center text-sm font-medium text-gray-700 mb-3">
+            Popular Subjects
+          </h3>
+          <div className="overflow-x-auto pb-2">
+            <div className="flex gap-3 justify-center min-w-max px-4">
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => setSelectedCategory(category.id)}
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-medium transition-all whitespace-nowrap ${
+                    selectedCategory === category.id
+                      ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg scale-105'
+                      : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 hover:border-indigo-300'
+                  }`}
+                >
+                  <span className="text-lg">{category.emoji}</span>
+                  {category.label}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Loading State */}

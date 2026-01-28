@@ -12,10 +12,6 @@ export default function SocialFeedPage() {
   const [selectedPlatform, setSelectedPlatform] = useState<string>('all');
   const [selectedPost, setSelectedPost] = useState<SocialPost | null>(null);
 
-  useEffect(() => {
-    fetchPosts();
-  }, [selectedPlatform]);
-
   const fetchPosts = async () => {
     setLoading(true);
     try {
@@ -32,6 +28,11 @@ export default function SocialFeedPage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedPlatform]);
 
   const handleRewrite = (post: SocialPost) => {
     setSelectedPost(post);
